@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+const int FILAS = 3;
+const int COLUMNAS = 3;
+typedef int tabla[FILAS][COLUMNAS];
+
+void MostrarMatriz(tabla& matriz, int filas, int columnas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void TransponerMatriz(tabla& matriz, int filas, int columnas) {
+    tabla matrizTranspuesta;
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matrizTranspuesta[j][i] = matriz[i][j];
+        }
+    }
+
+    cout << "Matriz Transpuesta:" << endl;
+    MostrarMatriz(matrizTranspuesta, columnas, filas);
+}
+
+int main() {
+    tabla miMatriz = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    cout << "Matriz Original:" << endl;
+    MostrarMatriz(miMatriz, FILAS, COLUMNAS);
+
+    TransponerMatriz(miMatriz, FILAS, COLUMNAS);
+
+    return 0;
+}
