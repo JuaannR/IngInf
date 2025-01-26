@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1728572552 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\ej1_main.cpp
+	<iostream>
+
+1730549605 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\ej2_main.cpp
+	<iostream>
+	"Interprete.h"
+
+1730546304 c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\intrerprete.h
+	<string>
+	<iostream>
+	"DicPaginas.h"
+
+1730549103 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\pagina.cpp
+	"Pagina.h"
+
+1730546810 c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\pagina.h
+	<iostream>
+
+1730572339 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\dicpaginas.cpp
+	"DicPaginas.h"
+	"Pagina.h"
+	<list>
+	<iostream>
+
+1730547756 c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\dicpaginas.h
+	<list>
+	<iostream>
+	"Pagina.h"
+
+1730398086 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\intrerprete.cpp
+	<iostream>
+	<vector>
+	"DicPaginas.h"
+
+1730572133 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\interprete.cpp
+	<iostream>
+	<vector>
+	"DicPaginas.h"
+	"Interprete.h"
+
+1730549381 c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\interprete.h
+	<string>
+	<iostream>
+	"DicPaginas.h"
+
+1730549605 source:c:\users\josé Ángel\onedrive\escritorio\practicas\tp\ej1_paed1\main.cpp
+	<iostream>
+	"Interprete.h"
+

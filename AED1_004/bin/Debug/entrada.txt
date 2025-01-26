@@ -1,0 +1,25 @@
+b condición
+i 53
+http://www.um.es
+Universidad de Murcia
+La Universidad de Murcia del tercer milenio tiene como eje central
+de su actividad la consecución de la excelencia académica y científica.
+Todo ello queda recogido en esta Web que pretende satisfacer
+las necesidades no solo de la comunidad universitaria sino de
+la Sociedad en general.
+FINDEPAGINA
+u http://dis.um.es/index.html
+b PROGRAMACIÓN
+a llevo la Condición
+i 76
+http://dis.um.es/index.html
+Departamento de Informática y Sistemas
+Universidad Estudios Investigación Internacional Comunicación 
+Texto a buscar Buscar Normativa FinDePágina
+a la PROGRAMACION de Meyer
+o PÁGINA CIGÜEÑA
+o TROYANO TROYA
+p AUTOCOM
+u http://WWW.UM.ES
+p Universi
+s
