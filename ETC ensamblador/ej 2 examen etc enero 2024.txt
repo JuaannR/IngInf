@@ -1,0 +1,64 @@
+        # Ejercicio 2
+dibuja_lineas:
+	addi	$sp, $sp, -36
+	sw	$ra, 0($sp)
+	sw	$s0, 4($sp)
+	sw	$s1, 8($sp)
+	sw	$s2, 12($sp)
+	sw	$s3, 16($sp)
+	sw	$s4, 20($sp)
+	sw	$s5, 24($sp)
+	sw	$s6, 28($sp)
+	sw	$s7, 32($sp)
+	move	$s0, $a0	# $s0 = img
+	move	$s1, $a1	# $s1 = ls
+	move	$s2, $a2	# $s2 = n
+	li	$s3, 0		# $s3 = j = 0
+for_j:
+	beq	$s3, $s2, fin_for_j
+	mul	$t0, $s3, 16	#j * 16  !!!!!tamaño total array Linea!!!!!
+	add	$t0, $s1, $t0	#ls[j]
+	lw	$t1, 0($t0)	#ls[j].inicio
+	lw	$t2, 0($t1)	#ls[j].inicio.x
+	lw	$t3, 4($t1)	#ls[j].inicio.y
+	move	$s4, $t2	# $s4 = x = ls[j].inicio.x
+	move	$s5, $t3	# $s5 = y = ls[j].inicio.y
+	li	$s6, 0		# $s6 = i = 0
+	lw	$s7, 12($t0)	# $ls[j].longitud
+for_i:
+	beq	$s6, $s7, fin_for_i
+	lw	$t4, 16($t0)	#ls[j].color   ¿¿¿¿¿¿¿???????
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s5
+	move	$a3, $t4
+	jal	imagen_set_pixel
+	mul	$t0, $s3, 16  #j*16  !!!!tamaño total del array !!!!
+	add	$t1, $s1, $t1	#ls[j]
+	lw	$t2, 8($t1)	#ls[j].direccion
+	bne	$t2, ¿V?,  else_if
+	addi	$s5, $s5, 1	#y=y+1
+	j	incrementa_i
+else_if:
+	bne	$t2, ¿H?,  fin_for_i
+	addi	$s4, $s4, 1
+	j	incrementa_i
+incrementa_i:
+	addi	$s6, $s6, 1
+	j	for_i
+fin_for_i:	
+	addi	$s3, $s3, 1	#j++
+	j	for_j
+fin_for_j:		
+	lw	$ra, 0($sp)
+	lw	$s0, 4($sp)
+	lw	$s1, 8($sp)
+	lw	$s2, 12($sp)
+	lw	$s3, 16($sp)
+	lw	$s4, 20($sp)
+	lw	$s5, 24($sp)
+	lw	$s6, 28($sp)
+	lw	$s7, 32($sp)
+	addi	$sp, $sp, 36
+	jr	$ra
+	# Fin ejercicio 2
