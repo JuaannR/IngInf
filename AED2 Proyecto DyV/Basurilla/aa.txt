@@ -1,0 +1,123 @@
+Typedef struct {
+    int posicion
+    int apariciones
+} Solucion
+
+solucionDirecta(A: String; inicio, fin, m: entero; c: carácter) -> Solucion     
+    int mejorPosicion = inicio
+    int maxApariciones = 0 
+    int apariciones = 0 
+
+    MIENTRAS (maxApariciones < m Y inicio <= fin) HACER:
+        SI (A[inicio] == c) ENTONCES 
+            ++apariciones
+            SI (apariciones > maxApariciones) ENTONCES 
+                maxApariciones = apariciones
+                mejorPosicion = max(min(inicio - apariciones + 1, fin-m+1),0);
+            FIN SI
+        ELSE
+            apariciones = 0
+        FIN SI	 
+        
+        inicio++
+    FIN MIENTRAS 
+
+    DEVOLVER (mejorPosicion, maxApariciones)
+
+
+
+
+
+    combinar(izq: Solucion; der: Solucion; A: String; inicio, medio, fin, m: entero; C: carácter) -> Solucion
+    int mejorPosicion = izq.posicion
+    int mejorApariciones = izq.apariciones
+
+    SI (der.apariciones > mejorApariciones) ENTONCES
+        mejorApariciones = der.apariciones
+        mejorPosicion = der.posicion
+    FIN SI
+
+    int izquierdaMax = 0
+    int derechaMax = 0
+
+    PARA i = medio HASTA i >= inicio Y A[i] == C Y izquierdaMax < m HACER:
+        izquierdaMax++
+        i--
+    FIN PARA
+
+    PARA i = medio + 1 HASTA i <= fin Y A[i] == C Y (izquierdaMax + derechaMax) < m HACER:
+        derechaMax++
+        i++
+    FIN PARA
+
+    int fronteraApariciones = izquierdaMax + derechaMax
+
+    SI (fronteraApariciones > mejorApariciones) ENTONCES
+        mejorApariciones = fronteraApariciones
+        mejorPosicion = medio - izquierdaMax + 1
+    FIN SI
+
+    DEVOLVER (mejorPosicion, mejorApariciones)
+
+
+
+
+
+
+
+
+
+
+    encontrarSubcadena(A: String; inicio, fin, m: entero; C: carácter) -> Solucion
+    Solucion resultado
+
+    SI ((fin - inicio + 1) / 2 < m) ENTONCES
+        DEVOLVER solucionDirecta(A, inicio, fin, m, C)
+    FIN SI
+
+    int medio = (inicio + fin) / 2
+    Solucion izquierda = encontrarSubcadena(A, inicio, medio, m, C)
+
+    SI (izquierda.apariciones == m) ENTONCES
+        resultado = izquierda
+    SI NO
+        Solucion derecha = encontrarSubcadena(A, medio + 1, fin, m, C)
+        SI (derecha.apariciones == m) ENTONCES
+            resultado = derecha
+        SI NO
+            resultado = combinar(izquierda, derecha, A, inicio, medio, fin, C, m)
+        FIN SI
+    FIN SI
+
+    DEVOLVER resultado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
