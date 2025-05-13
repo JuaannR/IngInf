@@ -1,0 +1,69 @@
+int maxBeneficioGlobal = 0;  // variable global
+
+calcularBeneficioMaxPorTrabajo(nw, nt: entero; tabla: matriz de enteros) -> lista de enteros
+    max_por_trabajo = lista de tamaño nt, inicializada a 0
+
+    PARA (j = 0) HASTA (j < nt)  HACER:
+        PARA (i = 0) HASTA (i < nw) HACER:
+		max_por_trabajo[j] = max(max_por_trabajo[j], tabla_beneficios[i][j]);
+        	i++;
+	FIN PARA
+	j++;
+    FIN PARA
+
+    DEVOLVER max_por_trabajo
+
+
+
+backtracking(tareaActual, beneficioActual, nw, nt: entero;
+             tabla_beneficios: matriz de enteros; capacidades_restantes, max_por_trabajo: lista de enteros)
+
+    bool continuar = true;
+
+    SI (tareaActual == nt) ENTONCES
+        SI (beneficioActual > maxBeneficioGlobal) ENTONCES
+            maxBeneficioGlobal = beneficioActual;
+        FIN SI
+        continuar = FALSO
+    FIN SI
+
+
+    SI (continuar) ENTONCES
+        int beneficioPosible = beneficioActual
+
+        PARA (i = tareaActual HASTA i < nt) HACER:
+            beneficioPosible += max_por_trabajo[i];
+	    i++;
+        FIN PARA
+
+        SI (beneficioPosible <= maxBeneficioGlobal) ENTONCES
+            continuar = FALSO;
+        FIN SI
+    FIN SI
+
+
+    SI (continuar) ENTONCES
+        PARA (trabajador = 0 HASTA trabajador < nw) HACER:
+            int b = tabla_beneficios[trabajador][tareaActual];
+
+            SI (b > 0 Y capacidades_restantes[trabajador] > 0) ENTONCES
+                capacidades_restantes[trabajador]--;
+
+                backtracking(tareaActual + 1, beneficioActual + b, nw, nt, tabla_beneficios, capacidades_restantes, max_por_trabajo);
+
+                capacidades_restantes[trabajador]++;
+            FIN SI
+	    trabajador+;
+        FIN PARA
+    FIN SI
+
+
+resolverCaso(nw, nt: entero; tabla_beneficios: matriz de enteros; capacidades: lista de enteros) -> entero
+    maxBeneficioGlobal = 0;
+
+    vector<int> capacidades_restantes = copia de capacidades;
+    vector<int> max_por_trabajo = calcularBeneficioMaxPorTrabajo(nw, nt, tabla_beneficios);
+
+    backtracking(0, 0, nw, nt, tabla_beneficios, capacidades_restantes, max_por_trabajo);
+
+    DEVOLVER maxBeneficioGlobal;
